@@ -19,27 +19,30 @@
 
         let computer = computerPlay();
         let player = playerSelection();
-        console.log(computer,player);
         let result
         if (computer == player) {
-            console.log("tie");
             result = "It's a tie!";
         }
         else if ((computer == "rock" && player == "scissors")
         || (computer == "scissors" && player == "paper")
         || (computer == "paper" && player == "rock")) {
-            console.log("lose");
             result = "You lose! " + computer + " beats " + player + "!";
         }
         else {
-            console.log("win");
             result = "You win! " + player + " beats " + computer + "!";
         }
         return result
     }
 
-    console.log(playRound(computerPlay, playerSelection));
+    function game(playRound) {
+        let number_of_games = 0;
+        while (number_of_games < 5) {
+            playRound(computerPlay, playerSelection);
+            number_of_games += 1;
+        }
+    }
 
+    console.log(game(playRound));
 
 </script>
 
