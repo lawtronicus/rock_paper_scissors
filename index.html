@@ -21,25 +21,45 @@
         let player = playerSelection();
         let result
         if (computer == player) {
-            result = "It's a tie!";
+            result = "tie";
         }
         else if ((computer == "rock" && player == "scissors")
         || (computer == "scissors" && player == "paper")
         || (computer == "paper" && player == "rock")) {
-            result = "You lose! " + computer + " beats " + player + "!";
+            result = "lose";
         }
         else {
-            result = "You win! " + player + " beats " + computer + "!";
+            result = "win";
         }
+        console.log(result);
         return result
     }
 
     function game(playRound) {
+        let wins = 0 
+        let losses = 0
+        let ties = 0
         let number_of_games = 0;
         while (number_of_games < 5) {
-            playRound(computerPlay, playerSelection);
+            console.log("wins: " + wins);
+            console.log("losses: " + losses);
+            console.log("ties: " + ties);
+            status = playRound(computerPlay, playerSelection);
+            console.log("status: " + status);
+            if (status == "win") {
+                wins += 1;
+            }
+            else if (status == "lose") {
+                losses += 1;
+            }
+            else {
+                ties += 1
+            }
             number_of_games += 1;
         }
+        console.log("wins: " + wins);
+        console.log("losses: " + losses);
+        console.log("draws: " + ties);
     }
 
     console.log(game(playRound));
