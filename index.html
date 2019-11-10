@@ -6,8 +6,41 @@
         return options[Math.floor(Math.random() * 3)]
     }
 
-    let computerHand = computerPlay();
-    console.log(computerHand);
+    function playerSelection() {
+        let playerChoice = prompt("Choose rock, paper, or scissors").toLowerCase();
+        if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
+            alert("That was not a viable option. Please try again");
+            playerChoice = playerSelection();
+        }
+        return playerChoice;
+    }
+
+    function playRound(computerPlay, playerSelection) {
+
+        let computer = computerPlay();
+        let player = playerSelection();
+        console.log(computer,player);
+        let result
+        if (computer == player) {
+            console.log("tie");
+            result = "It's a tie!";
+        }
+        else if ((computer == "rock" && player == "scissors")
+        || (computer == "scissors" && player == "paper")
+        || (computer == "paper" && player == "rock")) {
+            console.log("lose");
+            result = "You lose! " + computer + " beats " + player + "!";
+        }
+        else {
+            console.log("win");
+            result = "You win! " + player + " beats " + computer + "!";
+        }
+        return result
+    }
+
+    console.log(playRound(computerPlay, playerSelection));
+
+
 </script>
 
 
